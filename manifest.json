@@ -1,0 +1,23 @@
+{
+  "name": "UQTR-Gestion",
+  "version": "1.0",
+  "description": "Gestionnaire d'inscription de l'UQTR",
+  "browser_action": {
+    "default_icon": "favicon.png",
+    "default_popup": "ExtensionMain.html",
+    "persistent": true
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs",
+    "*://*.oraprdnt.uqtr.uquebec.ca/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.oraprdnt.uqtr.uquebec.ca/*"],
+      "js": ["libs/jquery.min.js","onPageLoad.js"]
+    }
+  ],
+  "manifest_version": 2
+}

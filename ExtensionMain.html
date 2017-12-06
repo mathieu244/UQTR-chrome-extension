@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <!--
+    communication page principale et extension chrome
+    https://developer.chrome.com/extensions/content_scripts
+    -->
+    <title>UQTR Course selector</title>
+    <style type="text/css">
+      body {
+        margin: 10px;
+        white-space: nowrap;
+      }
+
+      h1 {
+        font-size: 15px;
+      }
+
+      #container {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      table#horaire, th, td {
+         border: 5px double black;
+         background-color: WHITE;
+      }
+      table#horaire {
+         margin: 0 auto;
+         width: 100%;
+         height: 400px;
+      }
+      #overlay {
+          position: fixed; /* Sit on top of the page content */
+          display: block; /* Hidden by default */
+          width: 100%; /* Full width (cover the whole page) */
+          height: 100%; /* Full height (cover the whole page) */
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+          z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+          cursor: pointer; /* Add a pointer on hover */
+      }
+
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+    -->
+    <script src="libs/jquery.min.js"></script>
+    <script src="ExtensionScript.js"></script>
+  </head>
+
+  <body>
+    <h1>Set informations</h1>
+    <div id="container">
+      <div style="display: block">
+        <div>
+          <h4>No Programme</h4>
+          <input id="no_program" type="textfield"></input><button id="cours_btn">Load cours</button>
+        </div>
+        <!--<br />
+        <span>Choose year</span>
+        <select id="year">
+          <option selected value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+        </select>
+        <br />-->
+      <input id="checkall" type="checkbox" >CheckAll/UncheckAll</input>
+      <div id="liste_cours" style="display: block"></div>
+      <div>
+        <h4>Ann&eacute;e</h4>
+        <input id="annee" type="textfield"></input>
+        <span>Session</span>
+        <select id="session">
+          <option selected value="1">Hiver</option>
+          <option value="2">Ete</option>
+          <option value="3">Automne</option>
+        </select>
+      </div>
+      <button id="generate_btn">Generate grille</button> <i>Un cours contenant une * est sur une horaire complexe</i> <br />
+    <div>
+    </div>
+    <div id="choix_cours"> </div>
+    </div>
+
+    </div>
+    <!--<div id="cours_checkbox" style="display:none"> <input id="NOCOURS" type="checkbox">NOCOURS</input> </div>-->
+  </body>
+</html>
